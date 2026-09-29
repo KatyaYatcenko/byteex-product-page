@@ -66,9 +66,10 @@ figcaption{font-size:11px;text-align:center;color:var(--muted)}
 .faq-item{border-top:1px solid #ddd;padding:16px 0}.faq-item:last-child{border-bottom:1px solid #ddd}
 .faq-item button{width:100%;display:flex;justify-content:space-between;color:var(--navy);font-size:13px;text-align:left}
 .faq-item p{margin-top:8px;color:var(--muted);font-size:12px}
-.collage{position:relative;min-height:440px}.collage img{position:absolute;border:3px solid #fff}
-.c0{width:38%;aspect-ratio:3/4;top:0;right:0}.c1{width:50%;aspect-ratio:2/3;top:14%;left:16%;z-index:1}.c2{width:30%;aspect-ratio:1;bottom:0;left:0;z-index:2}
-/* impact */
+.collage{position:relative;min-height:460px}.collage img{position:absolute;border:3px solid #fff}
+.c0{width:34%;aspect-ratio:3/4;top:0;right:4%}
+.c1{width:52%;aspect-ratio:2/3;top:16%;left:14%;z-index:2}
+.c2{width:30%;aspect-ratio:1;bottom:-30px;left:0;z-index:1}
 .impact{background:var(--grey);text-align:center;padding:40px 16px}.impact h2{font-size:20px}
 .stats{display:flex;justify-content:center;gap:clamp(24px,8vw,120px);flex-wrap:wrap}
 .stats div{display:grid;justify-items:center;gap:4px}.stats b{font-size:18px;color:var(--navy);font-weight:500}.stats span{font-size:11px;color:var(--muted)}
