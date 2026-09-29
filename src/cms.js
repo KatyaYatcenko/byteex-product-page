@@ -2,7 +2,7 @@ import fallback from './content.json';
 
 const { VITE_CF_SPACE_ID: space, VITE_CF_TOKEN: token, VITE_CF_CONTENT_TYPE: type = 'productPage' } = import.meta.env;
 
-// Loads the page from Contentful (Delivery API). Any missing field falls back to content.json.
+
 export async function loadContent() {
   if (!space || !token) return fallback;
   try {
