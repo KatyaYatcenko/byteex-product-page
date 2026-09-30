@@ -29,17 +29,25 @@ function Features({ f }) {
         </ul>
       </div>
       <figure className="slider">
-        <div className="slide">
-          <button aria-label="Previous" onClick={() => setI((i + n - 1) % n)}>‹</button>
-          {img(f.gallery[i], f.caption)}
-          <button aria-label="Next" onClick={() => setI((i + 1) % n)}>›</button>
+       <button className="arrow" aria-label="Previous" onClick={() => setI((i + n - 1) % n)}>
+  <svg width="10.46" height="20.93" viewBox="0 0 11 21" aria-hidden>
+    <path d="M9 1L1 10.5L9 20" fill="none" stroke="currentColor" strokeWidth="2"/>
+  </svg>
+</button>
+        <div className="slide-card">
+          <div className="slide-img">{img(f.gallery[i], f.caption)}</div>
+          <div className="thumbs">
+            {f.gallery.map((g, k) => (
+              <button key={k} className={k === i ? 'on' : ''} onClick={() => setI(k)} aria-label={`Photo ${k + 1}`}>{img(g)}</button>
+            ))}
+          </div>
+          <figcaption>{f.caption}</figcaption>
         </div>
-        <div className="thumbs">
-          {f.gallery.map((g, k) => (
-            <button key={k} className={k === i ? 'on' : ''} onClick={() => setI(k)} aria-label={`Photo ${k + 1}`}>{img(g)}</button>
-          ))}
-        </div>
-        <figcaption>{f.caption}</figcaption>
+       <button className="arrow" aria-label="Next" onClick={() => setI((i + 1) % n)}>
+  <svg width="10.46" height="20.93" viewBox="0 0 11 21" aria-hidden>
+    <path d="M1 1L9 10.5L1 20" fill="none" stroke="currentColor" strokeWidth="2"/>
+  </svg>
+</button>
       </figure>
     </section>
   );
