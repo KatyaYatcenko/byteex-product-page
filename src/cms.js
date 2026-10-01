@@ -2,7 +2,6 @@ import fallback from './content.json';
 
 const { VITE_CF_SPACE_ID: space, VITE_CF_TOKEN: token, VITE_CF_CONTENT_TYPE: type = 'productPage' } = import.meta.env;
 
-
 export async function loadContent() {
   if (!space || !token) return fallback;
   try {
