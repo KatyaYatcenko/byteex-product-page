@@ -468,7 +468,7 @@ export default function App() {
               {hero.bullets.map((b, k) => (
                 <li key={k}>
                   <TickIcon i={k} />
-                  {b}
+                  <span>{b}</span>
                 </li>
               ))}
             </ul>
@@ -603,7 +603,7 @@ export default function App() {
           </div>
 
      <Cta c={c} />
-
+<CheckoutBadges />
 <div className="find-benefits">
   {(c.badges || []).map((text, k) => (
     <div className="find-benefit" key={k}>
@@ -613,7 +613,7 @@ export default function App() {
   ))}
 </div>
 
-<CheckoutBadges />
+
         </section>
       </main>
     </>

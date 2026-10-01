@@ -220,6 +220,9 @@ button {
   font-size: 13px;
 }
 
+.ticks li > span {
+  min-width: 0;
+}
 .quote {
   width: 454px;
   height: 172px;
@@ -505,7 +508,7 @@ figcaption {
 figcaption {
   width: 235px;
   max-width: 100%;
-  margin: 10px auto 0;
+  margin: 16px auto 0;
   font-family: "Suisse Int'l", sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -998,10 +1001,10 @@ figcaption {
   flex-wrap: wrap;
 }
 
-.payment-badges img {
-  width: auto;
+.payment-badges img.cards-strip {
+  width: 243px;
   height: 22px;
-  max-width: 50px;
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -1127,8 +1130,8 @@ figcaption {
     gap: 6px;
   }
 
-  .payment-badges img {
-    max-width: 44px;
+  .payment-badges img.cards-strip {
+    width: 180px;
   }
 }
 
@@ -1145,37 +1148,107 @@ figcaption {
   object-fit: contain;
 }
 
+/* ---------- inline svg icons ---------- */
+.ico {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--navy, #01005B);
+}
+
+.tick-icon {
+  width: 31px;
+  height: 31px;
+  flex: 0 0 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 0;
+}
+
+.tick-icon img {
+  display: block;
+  width: 31px;
+  height: 31px;
+  max-width: none;
+  object-fit: contain;
+}
+.tick-icon .ico {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.feature-icon .ico,
+.comfort-icon .ico {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- 3 фрази під кнопкою (як у макеті) ---------- */
 .find-benefits {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 70px;
-  margin-top: 38px;
-  margin-bottom: 34px;
+  align-items: stretch;
+  gap: 0;
+  margin: 34px auto;
+  max-width: 640px;
 }
 
 .find-benefit {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #01005B;
-  font-family: "Sofia Pro", sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-  letter-spacing: 0.03em;
+  padding: 4px 24px;
+  border-left: 1px solid #e3ded6;
+  color: #6f6f6f;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.find-benefit:first-child {
+  border-left: 0;
+}
+
+.find-benefit span {
+  max-width: 112px;
 }
 
 .find-benefit-icon {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  background: #f1efec;
+  color: var(--navy, #01005B);
 }
 
 .find-benefit-icon img {
-  width: 100%;
-  height: 100%;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
+}
+
+.find-benefit-icon .ico {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 700px) {
+  .find-benefits {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .find-benefit {
+    border-left: 0;
+    padding: 0;
+  }
 }
