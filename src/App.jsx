@@ -45,48 +45,95 @@ const Icon = ({ i }) => (
   </span>
 );
 
-/* Don’t apologize for being comfortable */
-const ComfortIcon = ({ i }) => {
-  const icons = [
-    'Eco Cart Icon',
-    'Express',
-    'Theme Toggle'
-  ];
+/* ---------- Inline SVG-іконки (не залежать від файлів у /public/img) ---------- */
+const ICON_PATHS = {
+  moon: <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />,
+  cloud: <path d="M6.5 18.5a4 4 0 0 1-.6-7.96 5.5 5.5 0 0 1 10.6-1.2 4.5 4.5 0 0 1 1 9.16z" />,
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z" />
+    </>
+  ),
+  home: <path d="M3 11l9-7.5 9 7.5M5.5 9.5V20h13V9.5M10 20v-6h4v6" />,
+  tag: (
+    <>
+      <path d="M3 12.2V4h8.2l9.3 9.3a1.5 1.5 0 0 1 0 2.1l-5.7 5.7a1.5 1.5 0 0 1-2.1 0z" />
+      <circle cx="7.5" cy="8.5" r="1.3" />
+    </>
+  ),
+  smile: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8 14c1 1.6 2.4 2.4 4 2.4s3-.8 4-2.4" />
+      <path d="M9 9.5h.01M15 9.5h.01" />
+    </>
+  ),
+  shield: (
+    <>
+      <path d="M12 3l7.5 3v5.5c0 4.6-3.1 8-7.5 9.5-4.4-1.5-7.5-4.9-7.5-9.5V6z" />
+      <path d="M8.5 12l2.5 2.5 4.5-5" />
+    </>
+  )
+};
 
+const Ico = ({ n }) => (
+  <svg
+    className="ico"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+  >
+    {ICON_PATHS[n]}
+  </svg>
+);
+
+/* png, які реально є в public/img */
+const PNG_ICONS = ['Express', 'Leaf', 'CO2', 'H2O', 'Energy'];
+const renderIcon = (name) =>
+  PNG_ICONS.includes(name) ? asset(name) : <Ico n={name} />;
+
+/* Don't apologize for being comfortable — three ticks under the H1 */
+const TickIcon = ({ i }) => {
+  const icons = ['moon', 'Leaf', 'cloud'];
+  return (
+    <span className="icon image-icon tick-icon" aria-hidden>
+      {renderIcon(icons[i])}
+    </span>
+  );
+};
+
+/* Find something you love — three benefit badges */
+const BenefitIcon = ({ i }) => {
+  const icons = ['Express', 'shield', 'Leaf'];
+  return (
+    <span className="find-benefit-icon" aria-hidden>
+      {renderIcon(icons[i])}
+    </span>
+  );
+};
+
+/* Comfort made easy — three cards */
+const ComfortIcon = ({ i }) => {
+  const icons = ['tag', 'Express', 'smile'];
   return (
     <span className="icon image-icon comfort-icon" aria-hidden>
-      {asset(icons[i])}
+      {renderIcon(icons[i])}
     </span>
   );
 };
 
 /* Loungewear you can be proud of */
 const FeatureIcon = ({ i }) => {
-  const icons = [
-    'Eco Cart Icon',
-    'Leaf',
-    'Theme Toggle',
-    'Waves'
-  ];
-
+  const icons = ['globe', 'Leaf', 'home', 'cloud'];
   return (
     <span className="icon image-icon feature-icon" aria-hidden>
-      {asset(icons[i])}
-    </span>
-  );
-};
-
-/* Comfort made easy */
-const EasyIcon = ({ i }) => {
-  const icons = [
-    'Eco Cart Icon',
-    'Express',
-    'Theme Toggle'
-  ];
-
-  return (
-    <span className="icon image-icon easy-icon" aria-hidden>
-      {asset(icons[i])}
+      {renderIcon(icons[i])}
     </span>
   );
 };
@@ -341,18 +388,6 @@ function PressLogos() {
 }
 
 function CheckoutBadges() {
-  const paymentLogos = [
-    'American Express',
-    'Apple Pay',
-    'Diners Club',
-    'Discover',
-    'Google Pay',
-    'Mastercard',
-    'PayPal',
-    'Shop Pay',
-    'Visa'
-  ];
-
   return (
     <div className="checkout-badges">
       <div className="shipping-badge">
@@ -363,13 +398,7 @@ function CheckoutBadges() {
       <div className="badge-divider" />
 
       <div className="payment-badges">
-        {paymentLogos.map((name) => (
-          <img
-            key={name}
-            src={`/img/${name}.png`}
-            alt={name}
-          />
-        ))}
+        {asset('Carts', 'Accepted payment methods', { className: 'cards-strip' })}
       </div>
     </div>
   );
@@ -417,7 +446,7 @@ export default function App() {
             <ul className="ticks">
               {hero.bullets.map((b, k) => (
                 <li key={k}>
-                  <Icon i={k} />
+                  <TickIcon i={k} />
                   {b}
                 </li>
               ))}
@@ -552,32 +581,18 @@ export default function App() {
             )}
           </div>
 
-          <Cta c={c} />
+     <Cta c={c} />
+
 <div className="find-benefits">
-  <div className="find-benefit">
-    <span className="find-benefit-icon">
-      {/* тут буде твоя Figma-картинка */}
-    </span>
-    <span>FREE Shipping on Orders over $200</span>
-  </div>
-
-  <div className="find-benefit">
-    <span className="find-benefit-icon">
-      {/* тут буде твоя Figma-картинка */}
-    </span>
-    <span>Over 500+ 5 Star Reviews Online</span>
-  </div>
-
-  <div className="find-benefit">
-    <span className="find-benefit-icon">
-      {/* тут буде твоя Figma-картинка */}
-    </span>
-    <span>Made ethically and responsibly.</span>
-  </div>
+  {(c.badges || []).map((text, k) => (
+    <div className="find-benefit" key={k}>
+      <BenefitIcon i={k} />
+      <span>{text}</span>
+    </div>
+  ))}
 </div>
 
 <CheckoutBadges />
-          <CheckoutBadges />
         </section>
       </main>
     </>
