@@ -100,40 +100,61 @@ const renderIcon = (name) =>
 
 /* Don't apologize for being comfortable — three ticks under the H1 */
 const TickIcon = ({ i }) => {
-  const icons = ['moon', 'Leaf', 'cloud'];
+  const icons = [
+    'Theme Toggle',
+    'Eco Cart Icon',
+    'Waves'
+  ];
+
   return (
     <span className="icon image-icon tick-icon" aria-hidden>
-      {renderIcon(icons[i])}
+      {asset(icons[i])}
     </span>
   );
 };
 
 /* Find something you love — three benefit badges */
 const BenefitIcon = ({ i }) => {
-  const icons = ['Express', 'shield', 'Leaf'];
+  const icons = [
+    'Express',
+    'Verified',
+    'Eco Cart Icon'
+  ];
+
   return (
     <span className="find-benefit-icon" aria-hidden>
-      {renderIcon(icons[i])}
+      {asset(icons[i])}
     </span>
   );
 };
 
 /* Comfort made easy — three cards */
 const ComfortIcon = ({ i }) => {
-  const icons = ['tag', 'Express', 'smile'];
+  const icons = [
+    'Eco Cart Icon',
+    'Express',
+    'Theme Toggle'
+  ];
+
   return (
     <span className="icon image-icon comfort-icon" aria-hidden>
-      {renderIcon(icons[i])}
+      {asset(icons[i])}
     </span>
   );
 };
 
 /* Loungewear you can be proud of */
 const FeatureIcon = ({ i }) => {
-  const icons = ['globe', 'Leaf', 'home', 'cloud'];
+  const icons = [
+    'Eco Cart Icon',
+    'Leaf',
+    'Theme Toggle',
+    'Waves'
+  ];
+
   return (
     <span className="icon image-icon feature-icon" aria-hidden>
-      {renderIcon(icons[i])}
+      {asset(icons[i])}
     </span>
   );
 };
